@@ -1,4 +1,4 @@
-COURSERA---Getting-and-Cleaning-Data
+COURSERA - Getting and Cleaning Data
 ====================================
 
 ## run_analysis.R
@@ -13,9 +13,13 @@ named 'train' and 'test'
 
 The following sections describe how the script work
 
+Attention: set the working directory of R or RStudio to the 'UCI HAR Dataset' directory
+before executing the script
+
 ### 1. Merges the training and the test sets to create one data set.
 
 read the train and test data sets and merge them.
+
 ```
 X1 <- read.table("./train/X_train.txt")
 X2 <- read.table("./test/X_test.txt")
@@ -30,19 +34,19 @@ y2 <- read.table("./test/y_test.txt")
 y <- rbind(y1, y2)
 ```
 
-Read features data and set labes for X data
+Read features file and set labels (columns names) for X data
 ```
 features <- read.table("./features.txt")
 names(X) <- features[,2]
 ```
 
-Set names for 'y' and 'subject' data
+Set columns names for 'y' and 'subject' data
 ```
 names(y) <- "activity"
 names(subject)<- "subject"
 ```
 
-Merge 'subject', 'X', and 'y'
+Merge 'subject', 'X', and 'y' data sets
 ```
 data <- cbind(subject,X,y)
 ```
@@ -51,6 +55,8 @@ data <- cbind(subject,X,y)
 
 Remove all columns that do NOT contain '-mean' or '-std', except column 1 (subject) and column 563 (y).
 
+a. collect numbers of all columns that do NOT contain '-mean' or '-std'.
+b. remove those columns from data set.
 
 ```
 rlist = vector()
@@ -65,7 +71,7 @@ data <- data[,-rlist]
 
 ### 3. Uses descriptive activity names to name the activities in the data set
 
-Read the activity labels and change the activities in column 'y' accordingly
+Read the activity labels file and change the activities in column 'y' of the data set accordingly
 
 ```
 activityLabels <- read.table("./activity_labels.txt")
