@@ -7,8 +7,6 @@
 # merge data in ./data/X.txt
 #
 
-# setwd("E://MyDocuments/UNIVERSITIES/COURSERA - Getting and Cleaning Data/peer assessment/UCI HAR Dataset")
-getwd()
 
 X1 <- read.table("./train/X_train.txt")
 X2 <- read.table("./test/X_test.txt")
