@@ -34,7 +34,6 @@ names(subject)<- "subject"
 # merge subject, X, y
 data <- cbind(subject,X,y)
 dim(data)
-names(data)
 
 #
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
