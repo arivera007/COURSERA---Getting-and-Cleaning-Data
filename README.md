@@ -18,7 +18,7 @@ before executing the script
 
 ### 1. Merges the training and the test sets to create one data set.
 
-read the train and test data sets and merge them.
+read the train and test data sets.
 
 ```
 X1 <- read.table("./train/X_train.txt")
