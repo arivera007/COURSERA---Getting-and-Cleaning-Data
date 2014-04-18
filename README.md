@@ -82,24 +82,18 @@ data$activity <- activityLabels[data$activity,2]
 ### 4. Appropriately labels the data set with descriptive variable or feature (column) names
 
 Change the column names to be more descriptive
+
+
 ```
-require(seqinr)
-# short-cut to sanitized column names: (coerce out `-` and `(` and `)`)
 data <- data.frame(data, check.rows=TRUE)
 
-names(data) <- gsub("\\.","_",names(data))
-names(data) <- trimSpace(names(data),space="_")
+names(data) <- gsub(" |-|\\.","_",names(data))
 names(data) <- gsub("(_)\\1+","_", names(data))
 
-names(data) <- gsub("_a","A", names(data))
-names(data) <- gsub("_b","B", names(data))
-names(data) <- gsub("_c","C", names(data))
-names(data) <- gsub("_e","E", names(data))
-names(data) <- gsub("_g","G", names(data))
-names(data) <- gsub("_i","I", names(data))
 names(data) <- gsub("_m","M", names(data))
 names(data) <- gsub("_s","S", names(data))
-names(data) <- gsub("_t","T", names(data))
+
+names(data) <- gsub("_$","", names(data))
 ```
 
 ### 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
